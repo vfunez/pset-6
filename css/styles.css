@@ -21,3 +21,25 @@ body{
     text-shadow: 2px 4px 6px #557A95;
     transform: rotate(45deg);
 }
+#title{
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    color: #F5FCFF;
+    font-size: 30px;
+    font-family: "Belleza";
+}
+
+.content{
+    width:400px;
+    height: 448px;
+    background-color: #DBF3FA;
+    overflow: auto;
+}
+.content::-webkit-scrollbar {
+    display: none;
+}
+.content ul{
+    padding:0;
+    margin:0;
+}
