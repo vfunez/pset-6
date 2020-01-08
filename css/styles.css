@@ -64,3 +64,26 @@ body{
 .fa-plus-circle{
     color:#6eb200;
 }
+.item p.text{
+    position: absolute;
+    padding:0px;
+    margin:0px;
+    font-size: 20px;
+    left:50px;
+    top:5px;
+    background-color: #DBF3FA;
+    max-width:285px;
+}
+.lineThrough{
+    text-decoration: line-through;
+    color : #FFF;
+}
+.item i.de{
+    position: absolute;
+    font-size: 25px;
+    right:15px;
+    top:10px;
+}
+.item i.de:hover{
+    color:#557A95;
+}
