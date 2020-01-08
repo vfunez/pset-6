@@ -1,3 +1,23 @@
-body {
-    background-color: #D8C99B;
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #7395AE;
+}
+.header{
+    width: 400px;
+    height:100px;
+    position: relative;
+}
+.clear{
+    position: absolute;
+    right:20px;
+    top: 5px;
+}
+.clear i{
+    font-size: 30px;
+    color: #B7E9F7;
+}
+.clear i:hover{
+    text-shadow: 2px 4px 6px #557A95;
+    transform: rotate(45deg);
 }
