@@ -5,8 +5,8 @@ const input = document.getElementById("input");
 const CHECK = "fa-plus-square-o";
 const UNCHECK = "fa-circle-thin";
 const LINE_THROUGH = "lineThrough";
-const NORMAL = "fa-exclamation";
-const PRIORITY = "fa-exclamation-circle";
+const EXCLAMATION = "fa-exclamation";
+const EXCLAMATION_CIRCLE = "fa-exclamation-circle";
 
 let LIST = []
     , id = 0;
@@ -15,7 +15,7 @@ let LIST = []
         if(trash){ return; }
         const DONE = done ? CHECK : UNCHECK;
         const LINE = done ? LINE_THROUGH : "";
-        const PRIOR = done ? PRIORITY : NORMAL;
+        const PRIOR = done ? EXCLAMATION_CIRCLE : EXCLAMATION;
         const item = `<li class="item">
                       <i class="fa ${DONE} co" job="complete" id= "${id}"></i>
                       <p class="text ${LINE}">${toDo}</p>
@@ -27,7 +27,7 @@ let LIST = []
     }
 
     document.addEventListener("keyup", function(even){
-      if(event.keyCode == 13){
+        if(event.keyCode == 13){
         const toDo = input.value;
         if (toDo) {
           addToDo(toDo, id, false, false, false);
@@ -44,41 +44,40 @@ let LIST = []
         }
       });
 
-      function completeToDo(element){
-          element.classList.toggle(CHECK);
-          element.classList.toggle(UNCHECK);
-          element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
-          LIST[element.id].done = LIST[element.id].done ? false : true;
-      }
+    function completeToDo(element){
+        element.classList.toggle(CHECK);
+        element.classList.toggle(UNCHECK);
+        element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+        LIST[element.id].done = LIST[element.id].done ? false : true;
+    }
 
-      function removeToDo(element){
+    function removeToDo(element){
         element.parentNode.parentNode.removeChild(element.parentNode);
         LIST[element.id].trash = true;
-      }
+    }
 
-      function priorityToDo(element) {
-          element = event.target;
-          elementParent = element.parentNode;
-          removeToDo(element);
-          element.classList.toggle(NORMAL);
-          element.classList.toggle(PRIORITY);
-          if (element.classList.contains(PRIORITY)) {
+    function priorityToDo(element) {
+        element = event.target;
+        elementParent = element.parentNode;
+        removeToDo(element);
+        element.classList.toggle(EXCLAMATION);
+        element.classList.toggle(EXCLAMATION_CIRCLE);
+          if (element.classList.contains(EXCLAMATION_CIRCLE)) {
               list.prepend(elementParent);
-          } else if (element.classList.contains(NORMAL)) {
+          } else if (element.classList.contains(EXCLAMATION)) {
               list.append(elementParent);
           } else {
-          }
-        };
+        }
+    };
 
-      list.addEventListener("click", function(event){
+    list.addEventListener("click", function(event){
         const element = event.target;
         const elementJob = element.attributes.job.value;
-
-        if(elementJob == "complete"){
-          completeToDo(element);
-        }else if(elementJob == "delete"){
-          removeToDo(element);
-        }else if(elementJob == "priority"){
-            priorityToDo(element);
-          }
-      });
+          if (elementJob == "complete") {
+              completeToDo(element);
+          } else if(elementJob == "delete") {
+              removeToDo(element);
+          } else if(elementJob == "priority") {
+              priorityToDo(element);
+        }
+    });
